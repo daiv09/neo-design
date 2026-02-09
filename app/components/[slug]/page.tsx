@@ -11,7 +11,7 @@ import {DashboardTableOfContents, TabButton} from "@/components/RHS-Sidebar";
 export default function ComponentPage({ params }: { params: Promise<{ slug: string }> }) {
   const [activeTab, setActiveTab] = useState<'preview' | 'code'>('preview');
   const [copied, setCopied] = useState(false);
-  const { slug } = use(params);
+  const { slug } = params;
   const component = componentRegistry[slug];
 
   if (!component) return notFound();
