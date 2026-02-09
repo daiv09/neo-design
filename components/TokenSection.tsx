@@ -22,7 +22,12 @@ export default function TokensSection() {
     animate: (i: number) => ({
       y: 0,
       opacity: 1,
-      transition: { delay: i * 0.05, type: "spring", stiffness: 300 }
+      transition: { 
+        delay: i * 0.08, 
+        type: "spring" as const, 
+        stiffness: 250,
+        damping: 25,
+      }
     })
   };
 
@@ -130,7 +135,7 @@ export default function TokensSection() {
               </div>
               
               {/* Bottom Decoration */}
-              <div className="h-2 w-full bg-gradient-to-r from-neo-red-400 via-neo-yellow-400 to-neo-blue-400" />
+              <div className="h-2 w-full bg-linear-to-r from-neo-red-400 via-neo-yellow-400 to-neo-blue-400" />
             </NeoCard>
           </motion.div>
 
