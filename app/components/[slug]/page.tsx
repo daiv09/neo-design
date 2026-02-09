@@ -11,15 +11,17 @@ import {DashboardTableOfContents, TabButton} from "@/components/RHS-Sidebar";
 export default function ComponentPage({ params }: { params: Promise<{ slug: string }> }) {
   const [activeTab, setActiveTab] = useState<'preview' | 'code'>('preview');
   const [copied, setCopied] = useState(false);
-  const { slug } = params;
+  const { slug } = use(params);
   const component = componentRegistry[slug];
 
   if (!component) return notFound();
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(component.code);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    if (component.code) {
+      navigator.clipboard.writeText(component.code);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
   };
 
   const tocItems = [
@@ -81,7 +83,7 @@ export default function ComponentPage({ params }: { params: Promise<{ slug: stri
                 </button>
                 <div className="p-6 overflow-auto max-h-125 custom-scrollbar">
                    <pre className="font-neo-mono text-sm text-neo-white/90">
-                     <code>{component.code}</code>
+                     <code>{component.code || 'No code available for this component.'}</code>
                    </pre>
                 </div>
               </div>
