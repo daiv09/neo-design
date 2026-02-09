@@ -1,15 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap");
 @import "tailwindcss";
+
+@theme {
+  --color-neo-red-400: #f87171;
+  --color-neo-blue-400: #60a5fa;
+  --color-neo-green-400: #4ade80;
+  --color-neo-yellow-400: #facc15;
+  --color-neo-white: #ffffff;
+  --color-neo-black: #000000;
+
+  /* Borders + radii */
+  --border-width-2: 2px;
+  --border-width-3: 3px;
+  --border-width-4: 4px;
+  --radius-2: 2px;
+  --radius-6: 6px;
+  --radius-12: 12px;
+
+  --shadow-neo: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  --shadow-neo-lg: 8px 8px 0px 0px rgba(0, 0, 0, 1);
+  --shadow-neo-sm: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+  --shadow-neo-xl: 12px 12px 0px 0px rgba(0, 0, 0, 1);
+
+  /* Typography */
+  --font-neo-sans: "Space Grotesk", "Arial Black", Arial, sans-serif;
+  --font-neo-mono: "Space Mono", "Courier New", monospace;
+
+  --translate-box: 4px;
+  --translate-box-sm: 2px;
+}
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +45,23 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-neo-sans);
+}
+
+code,
+pre {
+  font-family: var(--font-neo-mono);
+}
+
+.neo-grid {
+  background-image:
+    linear-gradient(var(--color-neo-black) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-neo-black) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.neo-noise {
+  background-image: radial-gradient(var(--color-neo-black) 1px, transparent 1px);
+  background-size: 12px 12px;
+  opacity: 0.08;
 }
